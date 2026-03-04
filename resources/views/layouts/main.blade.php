@@ -27,7 +27,7 @@
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="{{asset('css/main.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/main.css')}}" rel="stylesheet" />
     <link rel="icon" href="https://i.ibb.co.com/5ggVbPJB/Logo-Kementrian-Imigrasi-dan-Pemasyarakatan-2024.png" type="image/png">
   </head>
 
