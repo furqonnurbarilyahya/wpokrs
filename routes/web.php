@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', function () {
-    return view('layouts/main');
+    return view('pages/main');
 });
+
+Route::get('/registration', [RegistrationController::class, 'index'])
+    ->name('registration.index');

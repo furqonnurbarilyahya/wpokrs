@@ -27,7 +27,7 @@
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="{{asset('css/main.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/main.css')}}" rel="stylesheet" />
     <link rel="icon" href="https://i.ibb.co.com/5ggVbPJB/Logo-Kementrian-Imigrasi-dan-Pemasyarakatan-2024.png" type="image/png">
   </head>
 
@@ -170,7 +170,7 @@
                   data-aos="fade-up"
                   data-aos-delay="300"
                 >
-                  <a href="pendaftaran.html" class="btn btn-midnightblue"
+                  <a href="{{ route('registration.index')}}" class="btn btn-midnightblue"
                     >Pendaftaran Online</a
                   >
                   <a href="#services" class="btn btn-warning"
