@@ -51,9 +51,8 @@
               <!-- Form -->
         <!-- <form action="/daftar" method="post" enctype="multipart/form-data"> -->
 
-        <form action="/daftar" method="POST" enctype="multipart/form-data">
-
-
+        <form action="{{ route('daftar')}}" method="POST" enctype="multipart/form-data">
+          @csrf
              <div class="mb-3">
                 <label for="id_card" class="form-label fw-semibold">
                   Pilih Kartu Identitas
@@ -795,7 +794,7 @@
         </script>
 
 
-                <div class="d-grid">
+                <div class="d-grid mb-4">
                   <button
                     type="button"
                     class="btn btn-success btn-lg fw-semibold"
@@ -804,12 +803,13 @@
                   </button>
                 </div>
                 <div class="d-grid">
-                  <button
+                  <a
                     type="button"
-                    class="btn btn-success btn-lg fw-semibold"
-                    id="btn-preview">
-                    Daftar Kunjungan
-                  </button>
+                    class="btn btn-danger btn-lg fw-semibold"
+                    id="btn-preview"
+                    href="/">
+                    Kembali ke Halaman Utama
+                  </a>
                 </div>
               </form>
 
