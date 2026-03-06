@@ -170,7 +170,7 @@
                   data-aos="fade-up"
                   data-aos-delay="300"
                 >
-                  <a href="pendaftaran.html" class="btn btn-midnightblue"
+                  <a href="{{ route('registration.index')}}" class="btn btn-midnightblue"
                     >Pendaftaran Online</a
                   >
                   <a href="#services" class="btn btn-warning"

@@ -2160,9 +2160,18 @@ module.exports = {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _pages_registration__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/registration */ "./resources/js/pages/registration.js");
+/* harmony import */ var _pages_registration__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_pages_registration__WEBPACK_IMPORTED_MODULE_1__);
+// require('./bootstrap');
+
+
+
 
 /***/ },
 
@@ -2199,6 +2208,353 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ },
+
+/***/ "./resources/js/pages/registration.js"
+/*!********************************************!*\
+  !*** ./resources/js/pages/registration.js ***!
+  \********************************************/
+() {
+
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// inisialisasi pertama kali
+hitungTotal();
+var wbpValid = false;
+var radios = document.querySelectorAll('input[name="radio_kartu_identitas"]');
+var idCardInput = document.getElementById("id_card");
+var msg = document.getElementById("msg");
+var selectedType = null;
+radios.forEach(function (radio) {
+  radio.addEventListener("change", function () {
+    selectedType = this.value;
+    idCardInput.value = "";
+    msg.style.display = "none";
+
+    // === NIK ===
+    if (selectedType === "NIK") {
+      idCardInput.type = "text";
+      idCardInput.inputMode = "numeric"; // keyboard angka di HP
+      idCardInput.pattern = "[0-9]*";
+      idCardInput.placeholder = "Masukkan 16 digit angka";
+      idCardInput.maxLength = 16;
+      idCardInput.oninput = function () {
+        // hanya angka
+        this.value = this.value.replace(/\D/g, "");
+        if (!(this.value.length == 16)) {
+          msg.innerText = selectedType === "NIK" ? "Nomor Induk Kependudukan (NIK) harus 16 digit" : "Nomor Induk Kependudukan (NIK) harus 16 digit";
+          msg.style.display = "inline";
+        } else {
+          msg.style.display = "none";
+        }
+      };
+    }
+
+    // === SIM ====
+    if (selectedType === "SIM") {
+      idCardInput.type = "text";
+      idCardInput.inputMode = "numeric"; // keyboard angka di HP
+      idCardInput.pattern = "[0-9]*";
+      idCardInput.placeholder = "Masukkan 14 atau 16 digit angka";
+      idCardInput.maxLength = 16;
+      idCardInput.oninput = function () {
+        // hanya angka
+        this.value = this.value.replace(/\D/g, "");
+        if (!(this.value.length == 14 || this.value.length == 16)) {
+          msg.innerText = selectedType === "SIM" ? "Nomor SIM harus 14 atau 16 digit" : "Nomor SIM harus 14 atau 16 digit";
+          msg.style.display = "inline";
+        } else {
+          msg.style.display = "none";
+        }
+      };
+    }
+
+    // === PASPOR ===
+    if (selectedType === "paspor") {
+      idCardInput.type = "text";
+      idCardInput.inputMode = "text";
+      idCardInput.pattern = "[A-Za-z0-9]*";
+      idCardInput.placeholder = "Masukkan 9 digit (huruf/angka)";
+      idCardInput.maxLength = 9;
+      idCardInput.oninput = function () {
+        // hanya huruf & angka
+        this.value = this.value.replace(/[^A-Za-z0-9]/g, "");
+        if (this.value.length > 0 && this.value.length < 9) {
+          msg.innerText = "Nomor Paspor harus 9 karakter";
+          msg.style.display = "inline";
+        } else {
+          msg.style.display = "none";
+        }
+      };
+    }
+    if (selectedType === "Lainnya") {
+      idCardInput.type = "text";
+      idCardInput.inputMode = "text";
+      idCardInput.pattern = "[A-Za-z0-9]*";
+      idCardInput.placeholder = "Masukkan Maksimal 20 digit (huruf/angka)";
+      idCardInput.maxLength = 20;
+      idCardInput.oninput = function () {
+        // hanya huruf & angka
+        this.value = this.value.replace(/[^A-Za-z0-9]/g, "");
+        if (this.value.length > 0 && this.value.length < 9) {
+          msg.innerText = "Nomor Maksimal hanya 20 Karakter";
+          msg.style.display = "inline";
+        } else {
+          msg.style.display = "none";
+        }
+      };
+    }
+  });
+});
+var noteleponInput = document.getElementById("no_hp");
+var msg_notelepon = document.getElementById("msg_notelepon");
+document.getElementById("no_hp").addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, "");
+});
+noteleponInput.oninput = function () {
+  // hanya huruf & angka
+  this.value = this.value.replace(/[^0-9]/g, "");
+  if (this.value.length < 10 || this.value.length > 13) {
+    msg_notelepon.innerText = "Isi nomor telepon minimal 10 dan maksimal 13 Angka";
+    msg_notelepon.style.display = "inline";
+  } else {
+    msg_notelepon.style.display = "none";
+  }
+};
+var inputs = ["dewasa_laki", "dewasa_perempuan", "anak"];
+var totalInput = document.getElementById("total_pengunjung");
+var errorTotal = document.getElementById("error_total");
+function hitungTotal() {
+  var total = 1;
+  inputs.forEach(function (id) {
+    var el = document.getElementById(id);
+
+    // 🔒 filter supaya hanya angka
+    el.value = el.value.replace(/[^0-9]/g, "");
+    var val = parseInt(el.value || "0");
+    total += val;
+  });
+  totalInput.value = total;
+
+  // 🔔 tampilkan peringatan jika total 0
+  if (total === 0) {
+    errorTotal.style.display = "block";
+  } else {
+    errorTotal.style.display = "none";
+  }
+}
+
+// update total setiap input berubah
+inputs.forEach(function (id) {
+  document.getElementById(id).addEventListener("input", hitungTotal);
+});
+var inputTanggal = document.getElementById("tanggal_kunjungan");
+var alertTanggal = document.getElementById("alert-tanggal");
+inputTanggal.addEventListener("change", function () {
+  alertTanggal.textContent = "";
+  if (!this.value) return;
+  var _this$value$split$map = this.value.split("-").map(Number),
+    _this$value$split$map2 = _slicedToArray(_this$value$split$map, 3),
+    y = _this$value$split$map2[0],
+    m = _this$value$split$map2[1],
+    d = _this$value$split$map2[2];
+  var tanggal_kunjungan = new Date(y, m - 1, d);
+  var hari = tanggal_kunjungan.getDay();
+  // Minggu=0 Senin=1 Selasa=2 Rabu=3 Kamis=4 Jumat=5 Sabtu=6
+
+  if (hari !== 2 && hari !== 4) {
+    alertTanggal.textContent = "Mohon maaf, jadwal kunjungan hanya tersedia di hari Selasa dan Kamis.";
+    this.value = "";
+    document.dispatchEvent(new Event("checkForm"));
+
+    // this.value = "";
+    // valid
+  }
+});
+var LABELS = {
+  radio_kartu_identitas: "Jenis Kartu Identitas",
+  id_card: "Nomor Identitas",
+  nama_lengkap: "Nama Lengkap",
+  jenis_kelamin: "Jenis Kelamin",
+  alamat_pengunjung: "Alamat Pengunjung",
+  dewasa_laki: "Pengikut Laki-laki",
+  dewasa_perempuan: "Pengikut Perempuan",
+  anak: "Pengikut Anak-anak",
+  total_pengunjung: "Total Pengunjung",
+  nama_ayah_wbp: "Nama Ayah WBP",
+  nama_wbp: "Nama WBP",
+  klasifikasi_wbp: "Klasifikasi WBP",
+  upload_izin_besuk: "File Izin Besuk",
+  radio_hubungan_wbp: "Hubungan dengan WBP",
+  // keterangan: "Daftar Barang Bawaan",
+  tanggal_kunjungan: "Tanggal Kunjungan"
+};
+var btnPreview = document.getElementById("btn-preview");
+var btnSubmit = document.getElementById("btn-submit");
+var form = document.querySelector("form");
+var previewData = document.getElementById("previewData");
+var modal = new bootstrap.Modal(document.getElementById("confirmModal"));
+btnPreview.addEventListener("click", function () {
+  // ambil data form
+  var data = new FormData(form);
+  var html = "<table class='table table-bordered'>";
+  html += "<tbody>";
+  var _iterator = _createForOfIteratorHelper(data.entries()),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = _slicedToArray(_step.value, 2),
+        key = _step$value[0],
+        value = _step$value[1];
+      // gunakan label custom
+      var label = LABELS[key] || key;
+      if (key === "upload_izin_besuk" && value instanceof File) {
+        html += "<tr><th>".concat(label, "</th><td>").concat(value.name || "-", "</td></tr>");
+      } else {
+        html += "<tr><th>".concat(label, "</th><td>").concat(value || "-", "</td></tr>");
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  html += "</tbody></table>";
+  previewData.innerHTML = html;
+  modal.show();
+});
+
+// submit sebenarnya
+btnSubmit.addEventListener("click", function () {
+  form.submit();
+});
+document.addEventListener("DOMContentLoaded", function () {
+  var btnPreview = document.getElementById("btn-preview");
+  var radioKartu = document.querySelectorAll('input[name="radio_kartu_identitas"]');
+  var idCard = document.getElementById("id_card");
+  var namaLengkap = document.getElementById("nama_lengkap");
+  var radioJK = document.querySelectorAll('input[name="radio_jenis_kelamin"]');
+  var notelepon = document.getElementById("no_hp");
+  var keperluan = document.getElementById("keperluan");
+  var alamat = document.getElementById("alamat_pengunjung");
+  var namaWbp = document.getElementById("nama_wbp");
+  var hubungan = document.querySelectorAll('input[name="radio_hubungan_wbp"]');
+  var klasifikasi = document.querySelectorAll('input[name="klasifikasi_wbp"]');
+  var uploadIzin = document.getElementById("upload_izin_besuk");
+  var tanggal = document.getElementById("tanggal_kunjungan");
+  var jenisId = null;
+  idCard.disabled = true;
+  btnPreview.disabled = true;
+  function checkValid() {
+    var valid = true;
+
+    // ===============================
+    // JENIS KARTU
+    // ===============================
+    if (!jenisId) valid = false;
+
+    // ===============================
+    // NOMOR IDENTITAS
+    // ===============================
+    var v = idCard.value.trim();
+    if (jenisId === "NIK" && !(v.length === 16 && /^\d+$/.test(v))) valid = false;
+    if (jenisId === "SIM" && !((v.length === 14 || v.length === 16) && /^\d+$/.test(v))) valid = false;
+    if (jenisId === "Paspor" && !(v.length === 9 && /^[A-Za-z0-9]+$/.test(v))) valid = false;
+    if (jenisId === "Lainnya" && v === "") valid = false;
+
+    // ===============================
+    // DATA WAJIB
+    // ===============================
+    if (namaLengkap.value.trim() === "") valid = false;
+    if (notelepon.value.trim().length < 10 || notelepon.value.trim().length > 13) valid = false;
+    if (keperluan.value.trim() === "") valid = false;
+    if (alamat.value.trim() === "") valid = false;
+    if (namaWbp.value.trim() === "") valid = false;
+
+    // ===============================
+    // JENIS KELAMIN
+    // ===============================
+    if (!_toConsumableArray(radioJK).some(function (r) {
+      return r.checked;
+    })) valid = false;
+
+    // ===============================
+    // HUBUNGAN WBP
+    // ===============================
+    if (!_toConsumableArray(hubungan).some(function (r) {
+      return r.checked;
+    })) valid = false;
+
+    // ===============================
+    // KLASIFIKASI
+    // ===============================
+    var klas = _toConsumableArray(klasifikasi).find(function (r) {
+      return r.checked;
+    });
+    if (!klas) valid = false;
+    if (klas && klas.value === "Tahanan") {
+      if (uploadIzin) {
+        uploadIzin.disabled = false;
+        uploadIzin.required = true;
+        if (uploadIzin.files.length === 0) valid = false;
+      }
+    } else if (uploadIzin) {
+      uploadIzin.disabled = true;
+      uploadIzin.required = false;
+    }
+
+    // ===============================
+    // TANGGAL (SELASA / KAMIS)
+    // ===============================
+    if (!tanggal.value) {
+      valid = false;
+    } else {
+      var _tanggal$value$split$ = tanggal.value.split("-").map(Number),
+        _tanggal$value$split$2 = _slicedToArray(_tanggal$value$split$, 3),
+        y = _tanggal$value$split$2[0],
+        m = _tanggal$value$split$2[1],
+        d = _tanggal$value$split$2[2];
+      var hari = new Date(y, m - 1, d).getDay();
+      if (hari !== 2 && hari !== 4) valid = false;
+    }
+    btnPreview.disabled = !valid;
+  }
+
+  // ===============================
+  // EVENTS
+  // ===============================
+  radioKartu.forEach(function (r) {
+    r.addEventListener("change", function () {
+      jenisId = this.value;
+      idCard.disabled = false;
+      idCard.value = "";
+      checkValid();
+    });
+  });
+  [idCard, namaLengkap, notelepon, keperluan, alamat, namaWbp, tanggal].forEach(function (el) {
+    return el.addEventListener("input", checkValid);
+  });
+  radioJK.forEach(function (r) {
+    return r.addEventListener("change", checkValid);
+  });
+  hubungan.forEach(function (r) {
+    return r.addEventListener("change", checkValid);
+  });
+  klasifikasi.forEach(function (r) {
+    return r.addEventListener("change", checkValid);
+  });
+  checkValid();
+});
 
 /***/ },
 
@@ -19729,6 +20085,30 @@ process.umask = function() { return 0; };
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	
