@@ -173,7 +173,7 @@
                   <a href="{{ route('registration.index')}}" class="btn btn-midnightblue"
                     >Pendaftaran Online</a
                   >
-                  <a href="#services" class="btn btn-warning"
+                  <a href="{{ route('integration.index')}}" class="btn btn-warning"
                     >Layanan Integrasi</a
                   >
                 </div>

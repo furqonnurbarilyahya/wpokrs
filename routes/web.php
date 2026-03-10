@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\IntegrationController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -13,6 +14,9 @@ Route::get('/', function () {
 
 Route::get('/registration', [RegistrationController::class, 'index'])
     ->name('registration.index');
+
+Route::get('/integration', [IntegrationController::class, 'index'])
+    ->name('integration.index');
 
 Route::post('/daftar', [RegistrationController::class, 'store'])->name('daftar');
 
