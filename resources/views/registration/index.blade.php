@@ -51,7 +51,7 @@
               <!-- Form -->
         <!-- <form action="/daftar" method="post" enctype="multipart/form-data"> -->
 
-        <form action="{{ route('daftar')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('kunjungan.daftar')}}" method="POST" enctype="multipart/form-data">
           @csrf
              <div class="mb-3">
                 <label for="id_card" class="form-label fw-semibold">

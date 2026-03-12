@@ -18,9 +18,25 @@ Route::get('/registration', [RegistrationController::class, 'index'])
 Route::get('/integration', [IntegrationController::class, 'index'])
     ->name('integration.index');
 
-Route::post('/daftar', [RegistrationController::class, 'store'])->name('daftar');
+Route::prefix('kunjungan')->group(function () {
 
-Route::view('/success', 'success.success')->name('success');
+    Route::post('/daftar', [RegistrationController::class, 'store'])
+        ->name('kunjungan.daftar');
+
+});
+
+// Route::prefix('integrasi')->group(function () {
+
+//     Route::post('/daftar', [IntegrationController::class, 'store'])
+//         ->name('integrasi.daftar');
+
+// });
+
+Route::view('/registration-success', 'registration.success')
+    ->name('registration.success');
+
+// Route::view('/integration-success', 'integration.success')
+//     ->name('integration.success');
 
 Route::get('/verifikasi', [VerificationController::class, 'index']);
 
