@@ -165,6 +165,7 @@
                     class="form-control form-control-lg placeholder-fix"
                     id="perkara"
                     name="perkara"
+                    disabled
                     required
                   />
                 </div>
@@ -178,6 +179,7 @@
                     class="form-control form-control-lg placeholder-fix"
                     id="pasal"
                     name="pasal"
+                    disabled
                     required
                   />
                 </div>
@@ -726,13 +728,23 @@
         </script>
 
 
-                <div class="d-grid">
+                <div class="d-grid mb-3">
                   <button
                     type="button"
                     class="btn btn-success btn-lg fw-semibold"
                     id="btn-preview">
                     Kirim
                   </button>
+                </div>
+
+                <div class="d-grid">
+                  <a
+                    href="/"
+                    type="button"
+                    class="btn btn-danger btn-lg fw-semibold"
+                    id="btn-preview">
+                    Kembali ke Halaman Utama
+                  </a>
                 </div>
               </form>
 
@@ -774,7 +786,7 @@
         </div>
       </div>
     </div>
-    <script src="{{asset('assets/js/autocomplete.js')}}" defer></script>
+    <script src="{{asset('assets/js/autocomplete_integration.js')}}" defer></script>
     <script>
       const LABELS = {
       radio_kartu_identitas: "Jenis Kartu Identitas",
@@ -987,106 +999,226 @@
     });
     </script> -->
     
-    <script>
-document.addEventListener("DOMContentLoaded", function(){
+    <!-- <script>
+    document.addEventListener("DOMContentLoaded", function(){
 
-  const btnPreview = document.getElementById("btn-preview");
+      const btnPreview = document.getElementById("btn-preview");
 
-  const radioKartu = document.querySelectorAll('input[name="radio_kartu_identitas"]');
-  const idCard = document.getElementById("id_card");
-  const namaLengkap = document.getElementById("nama_lengkap");
-  const radioJK = document.querySelectorAll('input[name="radio_jenis_kelamin"]');
-  const notelepon = document.getElementById("no_hp");
-  const keperluan = document.getElementById("keperluan");
-  const alamat = document.getElementById("alamat_pengunjung");
-  const namaWbp = document.getElementById("nama_wbp");
-  const hubungan = document.querySelectorAll('input[name="radio_hubungan_wbp"]');
-  const klasifikasi = document.querySelectorAll('input[name="klasifikasi_wbp"]');
-  const uploadIzin = document.getElementById("upload_izin_besuk");
-  const tanggal = document.getElementById("tanggal_kunjungan");
+      const radioKartu = document.querySelectorAll('input[name="radio_kartu_identitas"]');
+      const idCard = document.getElementById("id_card");
+      const namaLengkap = document.getElementById("nama_lengkap");
+      const radioJK = document.querySelectorAll('input[name="radio_jenis_kelamin"]');
+      const notelepon = document.getElementById("no_hp");
+      const keperluan = document.getElementById("keperluan");
+      const alamat = document.getElementById("alamat_pengunjung");
+      const namaWbp = document.getElementById("nama_wbp");
+      const hubungan = document.querySelectorAll('input[name="radio_hubungan_wbp"]');
+      const klasifikasi = document.querySelectorAll('input[name="klasifikasi_wbp"]');
+      const uploadIzin = document.getElementById("upload_izin_besuk");
+      const tanggal = document.getElementById("tanggal_kunjungan");
 
-  let jenisId = null;
+      let jenisId = null;
 
-  idCard.disabled = true;
-  btnPreview.disabled = true;
+      idCard.disabled = true;
+      btnPreview.disabled = true;
 
-  function checkValid(){
-    let valid = true;
+      function checkValid(){
+        let valid = true;
 
-    // JENIS Pengajuan
-    if(radio_jenis_pengajuan.trim() === "") valid = false;
+        // JENIS Pengajuan
+        if(radio_jenis_pengajuan.trim() === "") valid = false;
 
-    // Nama Warga Binaan Pemasyarakatan
-    if(namaWbp.value.trim() === "") valid = false;
-    
-    //Klasifikasi WBP
-    const klas = [...klasifikasi].find(r => r.checked);
-    if(!klas) valid = false;
+        // Nama Warga Binaan Pemasyarakatan
+        if(namaWbp.value.trim() === "") valid = false;
+        
+        //Klasifikasi WBP
+        const klas = [...klasifikasi].find(r => r.checked);
+        if(!klas) valid = false;
 
-    //Perkara
+        //Perkara
 
-    //Pasal
+        //Pasal
 
-    //Nama Lengkap Pengunjung
-    if(namaLengkap.value.trim() === "") valid = false;
+        //Nama Lengkap Pengunjung
+        if(namaLengkap.value.trim() === "") valid = false;
 
-    //Pilih Jenis Kartu Identitas
-    if(!jenisId) valid = false;
+        //Pilih Jenis Kartu Identitas
+        if(!jenisId) valid = false;
 
-    // NOMOR IDENTITAS
-    const v = idCard.value.trim();
-    if(jenisId === "NIK" && !(v.length === 16 && /^\d+$/.test(v))) valid = false;
-    if(jenisId === "SIM" && !((v.length === 14 || v.length === 16) && /^\d+$/.test(v))) valid = false;
-    if(jenisId === "Paspor" && !(v.length === 9 && /^[A-Za-z0-9]+$/.test(v))) valid = false;
-    if(jenisId === "Lainnya" && v === "") valid = false;
+        // NOMOR IDENTITAS
+        const v = idCard.value.trim();
+        if(jenisId === "NIK" && !(v.length === 16 && /^\d+$/.test(v))) valid = false;
+        if(jenisId === "SIM" && !((v.length === 14 || v.length === 16) && /^\d+$/.test(v))) valid = false;
+        if(jenisId === "Paspor" && !(v.length === 9 && /^[A-Za-z0-9]+$/.test(v))) valid = false;
+        if(jenisId === "Lainnya" && v === "") valid = false;
 
-    // Jenis Kelamin
-    if(![...radioJK].some(r => r.checked)) valid = false;
+        // Jenis Kelamin
+        if(![...radioJK].some(r => r.checked)) valid = false;
 
-    // Alamat Pengunjung
-    if(alamat.value.trim() === "") valid = false;
+        // Alamat Pengunjung
+        if(alamat.value.trim() === "") valid = false;
 
-    // No Telepon / WA
-    if(notelepon.value.trim().length < 10 || notelepon.value.trim().length > 13) valid = false;
+        // No Telepon / WA
+        if(notelepon.value.trim().length < 10 || notelepon.value.trim().length > 13) valid = false;
 
-    // Email
+        // Email
 
-    // HUbungan dengan WBP
-    if(![...hubungan].some(r => r.checked)) valid = false;
+        // HUbungan dengan WBP
+        if(![...hubungan].some(r => r.checked)) valid = false;
 
-    btnPreview.disabled = !valid;
-  }
+        btnPreview.disabled = !valid;
+      }
 
-  // ===============================
-  // EVENTS
-  // ===============================
-  radioKartu.forEach(r => {
-    r.addEventListener("change", function(){
-      jenisId = this.value;
-      idCard.disabled = false;
-      idCard.value = "";
+      // ===============================
+      // EVENTS
+      // ===============================
+      radioKartu.forEach(r => {
+        r.addEventListener("change", function(){
+          jenisId = this.value;
+          idCard.disabled = false;
+          idCard.value = "";
+          checkValid();
+        });
+      });
+
+      [
+        idCard,
+        namaLengkap,
+        notelepon,
+        keperluan,
+        alamat,
+        namaWbp,
+        tanggal
+      ].forEach(el => el.addEventListener("input", checkValid));
+
+      radioJK.forEach(r => r.addEventListener("change", checkValid));
+      hubungan.forEach(r => r.addEventListener("change", checkValid));
+      klasifikasi.forEach(r => r.addEventListener("change", checkValid));
+
       checkValid();
     });
-  });
+</script> -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
 
-  [
-    idCard,
-    namaLengkap,
-    notelepon,
-    keperluan,
-    alamat,
-    namaWbp,
-    tanggal
-  ].forEach(el => el.addEventListener("input", checkValid));
+      const btnPreview = document.getElementById("btn-preview");
 
-  radioJK.forEach(r => r.addEventListener("change", checkValid));
-  hubungan.forEach(r => r.addEventListener("change", checkValid));
-  klasifikasi.forEach(r => r.addEventListener("change", checkValid));
+      const radioPengajuan = document.querySelectorAll('input[name="radio_jenis_pengajuan"]');
+      const radioKartu = document.querySelectorAll('input[name="radio_kartu_identitas"]');
+      const radioJK = document.querySelectorAll('input[name="radio_jenis_kelamin"]');
+      const hubungan = document.querySelectorAll('input[name="radio_hubungan_wbp"]');
+      const klasifikasi = document.querySelectorAll('input[name="klasifikasi_wbp"]');
 
-  checkValid();
-});
-</script>
+      const namaWbp = document.getElementById("nama_wbp");
+      const namaLengkap = document.getElementById("nama_lengkap");
+      const idCard = document.getElementById("id_card");
+      const notelepon = document.getElementById("no_hp");
+      const alamat = document.getElementById("alamat_pengunjung");
+      const email = document.getElementById("email");
 
+      let jenisId = null;
 
+      idCard.disabled = true;
+      btnPreview.disabled = true;
+
+      function checkValid(){
+        let valid = true;
+
+        // ======================
+        // JENIS PENGAJUAN
+        // ======================
+        if(![...radioPengajuan].some(r => r.checked)) valid = false;
+
+        // ======================
+        // NAMA WBP
+        // ======================
+        if(namaWbp.value.trim() === "") valid = false;
+
+        // ======================
+        // KLASIFIKASI
+        // ======================
+        if(![...klasifikasi].some(r => r.checked)) valid = false;
+
+        // ======================
+        // NAMA LENGKAP
+        // ======================
+        if(namaLengkap.value.trim() === "") valid = false;
+
+        // ======================
+        // JENIS IDENTITAS
+        // ======================
+        if(!jenisId) valid = false;
+
+        // ======================
+        // NOMOR IDENTITAS
+        // ======================
+        const v = idCard.value.trim();
+
+        if(jenisId === "NIK" && !(v.length === 16 && /^\d+$/.test(v))) valid = false;
+        if(jenisId === "SIM" && !((v.length === 14 || v.length === 16) && /^\d+$/.test(v))) valid = false;
+        if(jenisId === "Paspor" && !(v.length === 9 && /^[A-Za-z0-9]+$/.test(v))) valid = false;
+        if(jenisId === "Lainnya" && v === "") valid = false;
+
+        // ======================
+        // JENIS KELAMIN
+        // ======================
+        if(![...radioJK].some(r => r.checked)) valid = false;
+
+        // ======================
+        // ALAMAT
+        // ======================
+        if(alamat.value.trim() === "") valid = false;
+
+        // ======================
+        // TELEPON
+        // ======================
+        const tel = notelepon.value.trim();
+        if(!(tel.length >= 10 && tel.length <= 13)) valid = false;
+
+        // ======================
+        // EMAIL
+        // ======================
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailRegex.test(email.value.trim())) valid = false;
+
+        // ======================
+        // HUBUNGAN
+        // ======================
+        if(![...hubungan].some(r => r.checked)) valid = false;
+
+        btnPreview.disabled = !valid;
+      }
+
+      // ======================
+      // EVENT
+      // ======================
+
+      radioPengajuan.forEach(r => r.addEventListener("change", checkValid));
+
+      radioKartu.forEach(r => {
+        r.addEventListener("change", function(){
+          jenisId = this.value;
+          idCard.disabled = false;
+          idCard.value = "";
+          checkValid();
+        });
+      });
+
+      radioJK.forEach(r => r.addEventListener("change", checkValid));
+      hubungan.forEach(r => r.addEventListener("change", checkValid));
+      klasifikasi.forEach(r => r.addEventListener("change", checkValid));
+
+      [
+        namaWbp,
+        namaLengkap,
+        idCard,
+        notelepon,
+        alamat,
+        email
+      ].forEach(el => el.addEventListener("input", checkValid));
+
+      checkValid();
+    });
+    </script> 
   </body>
 </html>
