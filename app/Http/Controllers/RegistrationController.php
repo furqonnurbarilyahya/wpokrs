@@ -75,7 +75,7 @@ class RegistrationController extends Controller
         );
 
         // return redirect("/success?nomor=".$nomor);
-        return redirect()->route('success', ['nomor' => $nomor]);
+        return redirect()->route('registration.success', ['nomor' => $nomor]);
     }
 
     private function generateQueueCode()

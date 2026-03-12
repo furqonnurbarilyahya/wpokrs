@@ -173,7 +173,7 @@
                   <a href="{{ route('registration.index')}}" class="btn btn-midnightblue"
                     >Pendaftaran Online</a
                   >
-                  <a href="#services" class="btn btn-warning"
+                  <a href="{{ route('integration.index')}}" class="btn btn-warning"
                     >Layanan Integrasi</a
                   >
                 </div>
@@ -490,9 +490,9 @@
                   <img src="{{ asset('assets/images/pameran_1.webp') }}" class="img-fluid" alt="Brand Identity" loading="lazy">
                   <div class="overlay">
                     <div class="overlay-content">
-                      <a href="{{ asset('assets/images/pameran_1.webp') }}" class="glightbox zoom-link" title="Brand Identity Project">
+                      <!-- <a href="{{ asset('assets/images/pameran_1.webp') }}" class="glightbox zoom-link" title="Brand Identity Project">
                         <i class="bi bi-zoom-in"></i>
-                      </a>
+                      </a> -->
                       <!-- <a href="portfolio-details.html" class="details-link" title="View Project Details">
                         <i class="bi bi-arrow-right"></i> -->
                       </a>
@@ -500,8 +500,8 @@
                   </div>
                 </div>
                 <div class="content">
-                  <h3>Brand Identity</h3>
-                  <p>Corporate branding and visual identity system</p>
+                  <h3>Pameran UMKM Kab. Sumenep 2025</h3>
+                  <p>Bazar UMKM yang di Laksanakan di Stadion Ahmad Yani, memperingati hari Kemerdekaan RI</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -512,18 +512,18 @@
                   <img src="{{ asset ('assets/images/produk_1.webp') }}" class="img-fluid" alt="E-commerce Platform" loading="lazy">
                   <div class="overlay">
                     <div class="overlay-content">
-                      <a href="{{ asset ('assets/images/produk_1.webp') }}" class="glightbox zoom-link" title="E-commerce Platform">
+                      <!-- <a href="{{ asset ('assets/images/produk_1.webp') }}" class="glightbox zoom-link" title="E-commerce Platform">
                         <i class="bi bi-zoom-in"></i>
-                      </a>
+                      </a> -->
                       <!-- <a href="portfolio-details.html" class="details-link" title="View Project Details">
-                        <i class="bi bi-arrow-right"></i> -->
-                      </a>
+                        <i class="bi bi-arrow-right"></i>
+                      </a> -->
                     </div>
                   </div>
                 </div>
                 <div class="content">
-                  <h3>E-commerce Platform</h3>
-                  <p>Modern online shopping experience</p>
+                  <h3>Batik catra motif topeng</h3>
+                  <p>Hasil karya batik catra dari Warga Binaan Pemasyarakatan (WBP)</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -534,18 +534,18 @@
                   <img src="{{ asset ('assets/images/pameran_6.webp') }}" class="img-fluid" alt="Logo Collection" loading="lazy">
                   <div class="overlay">
                     <div class="overlay-content">
-                      <a href="{{ asset ('assets/images/pameran_6.webp') }}" class="glightbox zoom-link" title="Logo Collection">
+                      <!-- <a href="{{ asset ('assets/images/pameran_6.webp') }}" class="glightbox zoom-link" title="Logo Collection">
                         <i class="bi bi-zoom-in"></i>
-                      </a>
+                      </a> -->
                       <!-- <a href="portfolio-details.html" class="details-link" title="View Project Details">
-                        <i class="bi bi-arrow-right"></i> -->
-                      </a>
+                        <i class="bi bi-arrow-right"></i>
+                      </a> -->
                     </div>
                   </div>
                 </div>
                 <div class="content">
-                  <h3>Logo Collection</h3>
-                  <p>Diverse brand mark explorations</p>
+                  <h3>Pameran UMKM 2025</h3>
+                  <p>Bazar UMKM yang diselenggarakan oleh Bank Jatim</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -556,18 +556,18 @@
                   <img src="{{ asset ('assets/images/pameran_2.webp') }}" class="img-fluid" alt="Logo Collection" loading="lazy">
                   <div class="overlay">
                     <div class="overlay-content">
-                      <a href="{{ asset ('assets/images/pameran_2.webp') }}" class="glightbox zoom-link" title="Logo Collection">
+                      <!-- <a href="{{ asset ('assets/images/pameran_2.webp') }}" class="glightbox zoom-link" title="Logo Collection">
                         <i class="bi bi-zoom-in"></i>
-                      </a>
+                      </a> -->
                       <!-- <a href="portfolio-details.html" class="details-link" title="View Project Details">
-                        <i class="bi bi-arrow-right"></i> -->
-                      </a>
+                        <i class="bi bi-arrow-right"></i>
+                      </a> -->
                     </div>
                   </div>
                 </div>
                 <div class="content">
-                  <h3>Logo Collection 2</h3>
-                  <p>Diverse brand mark explorations</p>
+                  <h3>Pameran Galeri Seni</h3>
+                  <p>Menampilkan karya batik catra di Museum Sumenep</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -578,18 +578,18 @@
                   <img src="{{ asset ('assets/images/pameran_3.webp') }}" class="img-fluid" alt="Logo Collection" loading="lazy">
                   <div class="overlay">
                     <div class="overlay-content">
-                      <a href="{{ asset ('assets/images/pameran_3.webp') }}" class="glightbox zoom-link" title="Logo Collection">
+                      <!-- <a href="{{ asset ('assets/images/pameran_3.webp') }}" class="glightbox zoom-link" title="Logo Collection">
                         <i class="bi bi-zoom-in"></i>
-                      </a>
+                      </a> -->
                       <!-- <a href="portfolio-details.html" class="details-link" title="View Project Details">
-                        <i class="bi bi-arrow-right"></i> -->
-                      </a>
+                        <i class="bi bi-arrow-right"></i>
+                      </a> -->
                     </div>
                   </div>
                 </div>
                 <div class="content">
-                  <h3>Logo Collection 3</h3>
-                  <p>Diverse brand mark explorations</p>
+                  <h3>Festival Desa Wisata</h3>
+                  <p>Mengikuti festival desa wisata yang bertujuan mempromosikan batik catra Rutan Sumenep</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -600,18 +600,18 @@
                   <img src="{{ asset ('assets/images/produk_5.webp') }}" class="img-fluid" alt="Mobile App Design" loading="lazy">
                   <div class="overlay">
                     <div class="overlay-content">
-                      <a href="{{ asset ('assets/images/produk_5.webp') }}" class="glightbox zoom-link" title="Mobile App Design">
+                      <!-- <a href="{{ asset ('assets/images/produk_5.webp') }}" class="glightbox zoom-link" title="Mobile App Design">
                         <i class="bi bi-zoom-in"></i>
-                      </a>
+                      </a> -->
                       <!-- <a href="portfolio-details.html" class="details-link" title="View Project Details">
-                        <i class="bi bi-arrow-right"></i> -->
-                      </a>
+                        <i class="bi bi-arrow-right"></i>
+                      </a> -->
                     </div>
                   </div>
                 </div>
                 <div class="content">
-                  <h3>Mobile App Design</h3>
-                  <p>User-centered interface design</p>
+                  <h3>Aneka Produk Batik Catra</h3>
+                  <p>Hasil karya batik catra dari Warga Binaan Pemasyarakatan (WBP) dengan berbagai motif</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -622,18 +622,18 @@
                   <img src="{{ asset ('assets/images/produk_4.webp') }}" class="img-fluid" alt="Mobile App Design" loading="lazy">
                   <div class="overlay">
                     <div class="overlay-content">
-                      <a href="{{ asset ('assets/images/produk_4.webp') }}" class="glightbox zoom-link" title="Mobile App Design">
+                      <!-- <a href="{{ asset ('assets/images/produk_4.webp') }}" class="glightbox zoom-link" title="Mobile App Design">
                         <i class="bi bi-zoom-in"></i>
-                      </a>
+                      </a> -->
                       <!-- <a href="portfolio-details.html" class="details-link" title="View Project Details">
-                        <i class="bi bi-arrow-right"></i> -->
-                      </a>
+                        <i class="bi bi-arrow-right"></i>
+                      </a> -->
                     </div>
                   </div>
                 </div>
                 <div class="content">
-                  <h3>Mobile App Design 2</h3>
-                  <p>User-centered interface design</p>
+                  <h3>Batik catra motif Kakak Tua</h3>
+                  <p>Hasil karya batik catra dari Warga Binaan Pemasyarakatan (WBP) dengan motif kakak tua</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -644,18 +644,18 @@
                   <img src="{{ asset ('assets/images/produk_7.webp') }}" class="img-fluid" alt="Mobile App Design" loading="lazy">
                   <div class="overlay">
                     <div class="overlay-content">
-                      <a href="{{ asset ('assets/images/produk_7.webp') }}" class="glightbox zoom-link" title="Mobile App Design">
+                      <!-- <a href="{{ asset ('assets/images/produk_7.webp') }}" class="glightbox zoom-link" title="Mobile App Design">
                         <i class="bi bi-zoom-in"></i>
-                      </a>
+                      </a> -->
                       <!-- <a href="portfolio-details.html" class="details-link" title="View Project Details">
-                        <i class="bi bi-arrow-right"></i> -->
-                      </a>
+                        <i class="bi bi-arrow-right"></i>
+                      </a> -->
                     </div>
                   </div>
                 </div>
                 <div class="content">
-                  <h3>Mobile App Design 3</h3>
-                  <p>User-centered interface design</p>
+                  <h3>Batik Jatim</h3>
+                  <p>Hasil karya batik Jatim dari Warga Binaan Pemasyarakatan (WBP) Rutan Sumenep</p>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -824,15 +824,6 @@
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
                 <a href="#">Cookie Policy</a>
-              </div>
-              <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by
-                <a href="https://bootstrapmade.com/">BootstrapMade</a> |
-                <a href="https://bootstrapmade.com/tools/">DevTools</a>
               </div>
             </div>
           </div>

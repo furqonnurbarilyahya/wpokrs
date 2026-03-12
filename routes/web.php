@@ -3,10 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\IntegrationController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
     return view('main/main');
 });
@@ -14,9 +12,28 @@ Route::get('/', function () {
 Route::get('/registration', [RegistrationController::class, 'index'])
     ->name('registration.index');
 
-Route::post('/daftar', [RegistrationController::class, 'store'])->name('daftar');
+Route::get('/integration', [IntegrationController::class, 'index'])
+    ->name('integration.index');
 
-Route::view('/success', 'success.success')->name('success');
+Route::prefix('kunjungan')->group(function () {
+
+    Route::post('/daftar', [RegistrationController::class, 'store'])
+        ->name('kunjungan.daftar');
+
+});
+
+Route::prefix('integrasi')->group(function () {
+
+    Route::post('/daftar', [IntegrationController::class, 'store'])
+        ->name('integrasi.daftar');
+
+});
+
+Route::view('/registration-success', 'registration.success')
+    ->name('registration.success');
+
+Route::view('/integration-success', 'integration.success')
+    ->name('integration.success');
 
 Route::get('/verifikasi', [VerificationController::class, 'index']);
 
