@@ -51,7 +51,7 @@
               <!-- Form -->
         <!-- <form action="/daftar" method="post" enctype="multipart/form-data"> -->
 
-        <form action="{{ route('daftar')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('integrasi.daftar')}}" method="POST" enctype="multipart/form-data">
           @csrf
              <div class="mb-3">
                 <label for="jenis_pengajuan" class="form-label fw-semibold">
@@ -165,7 +165,7 @@
                     class="form-control form-control-lg placeholder-fix"
                     id="perkara"
                     name="perkara"
-                    disabled
+                    readonly
                     required
                   />
                 </div>
@@ -179,7 +179,7 @@
                     class="form-control form-control-lg placeholder-fix"
                     id="pasal"
                     name="pasal"
-                    disabled
+                    readonly
                     required
                   />
                 </div>
@@ -195,8 +195,8 @@
                   <input
                     type="text"
                     class="form-control form-control-lg placeholder-fix"
-                    id="nama_lengkap"
-                    name="nama_lengkap"
+                    id="nama_pengaju"
+                    name="nama_pengaju"
                     placeholder="Masukkan Nama Lengkap"
                     required
                   />
@@ -422,8 +422,8 @@
                   <input
                     type="text"
                     class="form-control form-control-lg placeholder-fix"
-                    id="alamat_pengunjung"
-                    name="alamat_pengunjung"
+                    id="alamat_pengaju"
+                    name="alamat_pengaju"
                     placeholder="Masukkan Alamat Pengunjung"
                     required
                   />
@@ -436,8 +436,8 @@
                   <input
                   type="tel"
                   class="form-control form-control-lg placeholder-fix"
-                  id="no_hp"
-                  name="no_hp"
+                  id="no_telepon"
+                  name="no_telepon"
                   placeholder="Masukkan Nomor Telepon / WA"
                   inputmode="numeric"
                   pattern="[0-9]*"
@@ -462,9 +462,9 @@
                   />
                 </div>
                 <script>
-                const noteleponInput = document.getElementById("no_hp");
+                const noteleponInput = document.getElementById("no_telepon");
                 const msg_notelepon = document.getElementById("msg_notelepon");
-                document.getElementById("no_hp").addEventListener("input", function () {
+                document.getElementById("no_telepon").addEventListener("input", function () {
                   this.value = this.value.replace(/[^0-9]/g, "");
                 });
                 noteleponInput.oninput = function () {
@@ -791,9 +791,9 @@
       const LABELS = {
       radio_kartu_identitas: "Jenis Kartu Identitas",
       id_card: "Nomor Identitas",
-      nama_lengkap: "Nama Lengkap",
+      nama_pengaju: "Nama Lengkap",
       jenis_kelamin: "Jenis Kelamin",
-      alamat_pengunjung: "Alamat Pengunjung",
+      alamat_pengaju: "Alamat Pengunjung",
 
       dewasa_laki: "Pengikut Laki-laki",
       dewasa_perempuan: "Pengikut Perempuan",
@@ -856,11 +856,11 @@
       const radioKartu = document.querySelectorAll('input[name="radio_kartu_identitas"]');
       const idCard = document.getElementById("id_card");
 
-      const namaLengkap = document.getElementById("nama_lengkap");
+      const namaLengkap = document.getElementById("nama_pengaju");
       const radioKartujk= document.querySelectorAll('input[name="radio_jenis_kelamin"]');
-      const notelepon = document.getElementById("no_hp");
+      const notelepon = document.getElementById("no_telepon");
       const keperluan = document.getElementById("keperluan");
-      const alamat = document.getElementById("alamat_pengunjung");
+      const alamat = document.getElementById("alamat_pengaju");
       const namaWbp = document.getElementById("nama_wbp");
       const namaAyahWbp = document.getElementById("nama_ayah_wbp");
       const hubungan = document.querySelectorAll('input[name="radio_hubungan_wbp"]');
@@ -1006,11 +1006,11 @@
 
       const radioKartu = document.querySelectorAll('input[name="radio_kartu_identitas"]');
       const idCard = document.getElementById("id_card");
-      const namaLengkap = document.getElementById("nama_lengkap");
+      const namaLengkap = document.getElementById("nama_pengaju");
       const radioJK = document.querySelectorAll('input[name="radio_jenis_kelamin"]');
-      const notelepon = document.getElementById("no_hp");
+      const notelepon = document.getElementById("no_telepon");
       const keperluan = document.getElementById("keperluan");
-      const alamat = document.getElementById("alamat_pengunjung");
+      const alamat = document.getElementById("alamat_pengaju");
       const namaWbp = document.getElementById("nama_wbp");
       const hubungan = document.querySelectorAll('input[name="radio_hubungan_wbp"]');
       const klasifikasi = document.querySelectorAll('input[name="klasifikasi_wbp"]');
@@ -1110,10 +1110,10 @@
       const klasifikasi = document.querySelectorAll('input[name="klasifikasi_wbp"]');
 
       const namaWbp = document.getElementById("nama_wbp");
-      const namaLengkap = document.getElementById("nama_lengkap");
+      const namaLengkap = document.getElementById("nama_pengaju");
       const idCard = document.getElementById("id_card");
-      const notelepon = document.getElementById("no_hp");
-      const alamat = document.getElementById("alamat_pengunjung");
+      const notelepon = document.getElementById("no_telepon");
+      const alamat = document.getElementById("alamat_pengaju");
       const email = document.getElementById("email");
 
       let jenisId = null;

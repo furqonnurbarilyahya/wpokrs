@@ -5,9 +5,6 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\IntegrationController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
     return view('main/main');
 });
@@ -25,18 +22,18 @@ Route::prefix('kunjungan')->group(function () {
 
 });
 
-// Route::prefix('integrasi')->group(function () {
+Route::prefix('integrasi')->group(function () {
 
-//     Route::post('/daftar', [IntegrationController::class, 'store'])
-//         ->name('integrasi.daftar');
+    Route::post('/daftar', [IntegrationController::class, 'store'])
+        ->name('integrasi.daftar');
 
-// });
+});
 
 Route::view('/registration-success', 'registration.success')
     ->name('registration.success');
 
-// Route::view('/integration-success', 'integration.success')
-//     ->name('integration.success');
+Route::view('/integration-success', 'integration.success')
+    ->name('integration.success');
 
 Route::get('/verifikasi', [VerificationController::class, 'index']);
 
