@@ -27,7 +27,7 @@ class IntegrationController extends Controller
 
         $data = [
             [
-                now()->format('j/n/Y, H.i.s'),
+                now()->locale('id')->translatedFormat('j F Y'),
                 $request->radio_jenis_pengajuan,
                 $request->nama_wbp,
                 $request->klasifikasi_wbp,

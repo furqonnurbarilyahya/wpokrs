@@ -36,7 +36,7 @@
             Silakan simpan atau screenshot kode ini untuk mengecek status pengajuan.
         </p>
 
-        <a href="/" class="btn btn-success w-100">
+        <a href="/" class="btn btn-danger w-100 mb-3">
             Kembali ke Halaman Utama
         </a>
 
