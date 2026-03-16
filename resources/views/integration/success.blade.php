@@ -40,6 +40,10 @@
             Kembali ke Halaman Utama
         </a>
 
+        <a href="{{ route('download.pdf', request('nomor')) }}" class="btn btn-warning">
+            Download Surat PDF
+        </a>
+
     </div>
 
 </body>

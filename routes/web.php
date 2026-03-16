@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\IntegrationController;
+use App\Http\Controllers\DocumentController;
 
 Route::get('/', function () {
     return view('main/main');
@@ -40,3 +41,6 @@ Route::get('/verifikasi', [VerificationController::class, 'index']);
 Route::get('/api/cari', [VerificationController::class, 'cari']);
 
 Route::post('/api/update-status', [VerificationController::class, 'updateStatus']);
+
+Route::get('/download/{nomor}', [DocumentController::class, 'generatePdf'])
+    ->name('download.pdf');
