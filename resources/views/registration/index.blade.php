@@ -12,7 +12,7 @@
     />
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" />
-    <link rel="icon" href="https://i.ibb.co.com/5ggVbPJB/Logo-Kementrian-Imigrasi-dan-Pemasyarakatan-2024.png" type="image/png">
+    <link rel="icon" href="https://i.ibb.co.com/yBWrMqZY/Gemini-Generated-Image-lc5naelc5naelc5n.png" type="image/png">
     <!-- <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/1/1a/Logo_Kemenkumham.png" sizes="32x32" type="image/png"> -->
     <!-- <link rel="icon" href="https://www.google.com/favicon.ico" type="image/x-icon"> -->
 
@@ -37,6 +37,11 @@
 
             <img 
               src="https://i.ibb.co.com/0jJvcV7c/Chat-GPT-Image-2-Jan-2026-10-54-08.png"
+              class="logo-pas"
+              alt="Logo Pemasyarakatan">
+
+            <img 
+              src="https://i.ibb.co.com/yBWrMqZY/Gemini-Generated-Image-lc5naelc5naelc5n.png"
               class="logo-pas"
               alt="Logo Pemasyarakatan">
 

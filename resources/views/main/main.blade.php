@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Pendaftaran Online Layanan Kunjungan</title>
+    <title>E-LAKSI</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
@@ -28,7 +28,7 @@
 
     <!-- Main CSS File -->
     <link href="{{asset('assets/css/main.css')}}" rel="stylesheet" />
-    <link rel="icon" href="https://i.ibb.co.com/5ggVbPJB/Logo-Kementrian-Imigrasi-dan-Pemasyarakatan-2024.png" type="image/png">
+    <link rel="icon" href="https://i.ibb.co.com/yBWrMqZY/Gemini-Generated-Image-lc5naelc5naelc5n.png" type="image/png">
   </head>
 
   <body class="index-page">
@@ -43,6 +43,11 @@
               src="https://i.ibb.co.com/5ggVbPJB/Logo-Kementrian-Imigrasi-dan-Pemasyarakatan-2024.png"
               class="logo-kemenkumham"
               alt="Logo Kemenkumham"
+            />
+            <img
+              src="https://i.ibb.co.com/yBWrMqZY/Gemini-Generated-Image-lc5naelc5naelc5n.png"
+              class="logo-kemenkumha"
+              alt="Logo Kemenkumha"
             />
           </a>
 
@@ -159,7 +164,7 @@
             <div class="row justify-content-center text-center">
               <div class="col-lg-10">
                 <h1 data-aos="fade-up" data-aos-delay="100">
-                  Pendaftaran Online Layanan Kunjungan
+                  Layanan Kunjungan dan Integrasi Elektronik
                 </h1>
                 <p data-aos="fade-up" data-aos-delay="200">
                   RUMAH TAHANAN NEGARA KELAS IIB SUMENEP
