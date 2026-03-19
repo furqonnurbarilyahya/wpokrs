@@ -190,7 +190,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <b class="fs-5">= = = Nama yang Mengajukan = = =</b>
+                  <b class="fs-5">= = = Data Penjamin = = =</b>
                 </div>
 
                 <div class="mb-3">
@@ -652,22 +652,6 @@
                       class="form-check-input"
                       type="radio"
                       name="radio_hubungan_wbp"
-                      id="hubungan_wbp_saudara_jauh"
-                      value="Saudara Jauh"
-                    />
-                    <label
-                      class="form-check-label"
-                      for="hubungan_wbp_saudara_jauh"
-                    >
-                      Saudara Jauh / Teman
-                    </label>
-                  </div>
-
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="radio_hubungan_wbp"
                       id="hubungan_wbp_suami_istri"
                       value="Suami/Istri"
                     />
@@ -794,12 +778,16 @@
     <script src="{{asset('assets/js/autocomplete_integration.js')}}" defer></script>
     <script>
       const LABELS = {
+      radio_jenis_pengajuan: "Jenis Pengajuan",
+      perkara: "Perkara",
+      pasal: "Pasal",
       radio_kartu_identitas: "Jenis Kartu Identitas",
       id_card: "Nomor Identitas",
-      nama_pengaju: "Nama Lengkap",
-      jenis_kelamin: "Jenis Kelamin",
+      nama_pengaju: "Nama Pengaju",
+      radio_jenis_kelamin: "Jenis Kelamin",
       alamat_pengaju: "Alamat Pengunjung",
-
+      no_telepon: "No Telepon/WA",
+      email: "Email",
       dewasa_laki: "Pengikut Laki-laki",
       dewasa_perempuan: "Pengikut Perempuan",
       anak: "Pengikut Anak-anak",
@@ -852,257 +840,7 @@
       form.submit();
     });
     </script>
-        <!-- <script>
-    document.addEventListener("DOMContentLoaded", function(){
 
-      const btnDaftar = document.getElementById("btn-preview");
-
-      // elemen form
-      const radioKartu = document.querySelectorAll('input[name="radio_kartu_identitas"]');
-      const idCard = document.getElementById("id_card");
-
-      const namaLengkap = document.getElementById("nama_pengaju");
-      const radioKartujk= document.querySelectorAll('input[name="radio_jenis_kelamin"]');
-      const notelepon = document.getElementById("no_telepon");
-      const keperluan = document.getElementById("keperluan");
-      const alamat = document.getElementById("alamat_pengaju");
-      const namaWbp = document.getElementById("nama_wbp");
-      const namaAyahWbp = document.getElementById("nama_ayah_wbp");
-      const hubungan = document.querySelectorAll('input[name="radio_hubungan_wbp"]');
-      const klasifikasi_wbp = document.querySelectorAll('input[name="klasifikasi_wbp"]');
-      const uploadIzin = document.getElementById("upload_izin_besuk");
-      // const barang = document.getElementById("keterangan");
-      const tanggal_kunjungan = document.getElementById("tanggal_kunjungan");
-
-      let jenisId = null;
-
-      // 🔒 default: input identitas dikunci
-      idCard.disabled = true;
-
-      // ===============================
-      // 🔁 fungsi cek semua validasi
-      // ===============================
-      function checkValid(){
-        let valid = true; // ✅ HARUS PALING ATAS
-
-        // ===============================
-        // JENIS KARTU
-        // ===============================
-        if(!jenisId) valid = false;
-
-        // ===============================
-        // IDENTITAS
-        // ===============================
-        const v = idCard.value.trim();
-        if(jenisId === "NIK" && !(v.length===16 && /^[0-9]+$/.test(v))) valid = false;
-        if(jenisId === "SIM" && !((v.length===14||v.length===16) && /^[0-9]+$/.test(v))) valid = false;
-        if(jenisId === "Paspor" && !(v.length===9 && /^[A-Za-z0-9]+$/.test(v))) valid = false;
-        if(jenisId === "Lainnya" && !(v.length <= 20 && /^[0-9]+$/.test(v))) valid = false;
-        // ===============================
-        // DATA WAJIB
-        // ===============================
-        if(namaLengkap.value.trim()==="") valid = false;
-        if(alamat.value.trim()==="") valid = false;
-
-        // ⛔ nama WBP HARUS dari autocomplete
-        // if(!wbpValid) valid = false;
-        if(namaWbp.value.trim()==="") valid = false;
-
-        //  radio jeniskelamin
-
-        const hub = [...hubungan].find(r=>r.checked);
-        // if(!hub) valid = false; awal
-        if(!hub) valid = true;
-
-        // data no WA
-        if(notelepon.value.trim()==="") valid = false;
-
-        // data keperluan
-        if(keperluan.value.trim()==="") valid = false;
-
-        // ===============================
-        // KLASIFIKASI
-        // ===============================
-        const klas = [...klasifikasi_wbp].find(r=>r.checked);
-        if(!klas) valid = false;
-
-        // upload masih di-comment → JANGAN DIPAKSA
-        if(klas && klas.value==="Tahanan" && uploadIzin){
-          uploadIzin.disabled = false;
-          uploadIzin.required = true;
-          if(uploadIzin.files.length===0) valid = false;
-        }
-
-        // ===============================
-        // HUBUNGAN
-        // ===============================
-        const radio_jk = [...radioKartujk].find(r=>r.checked);
-        // if(!hub) valid = false; awal
-        if(!radio_jk) valid = true;
-
-        // ===============================
-        // TANGGAL
-        // ===============================
-        if(!tanggal_kunjungan.value){
-          valid = false;
-        } else {
-          const [y,m,d] = tanggal_kunjungan.value.split("-").map(Number);
-          const hari = new Date(y,m-1,d).getDay();
-          if(hari!==2 && hari!==4) valid = false;
-        }
-
-        // ===============================
-        // TOMBOL
-        // ===============================
-        btnPreview.disabled = !valid;
-      }
-
-
-      // =================================
-      // EVENT: pilih jenis kartu identitas
-      // =================================
-      radioKartu.forEach(r=>{
-        r.addEventListener("change", function(){
-          jenisId = this.value;
-
-          idCard.disabled = false;
-          idCard.value = "";
-
-          checkValid();
-        });
-      });
-
-      // =================================
-      // EVENT: semua input penting dicek
-      // =================================
-      [
-        idCard,
-        radioKartujk,
-        namaLengkap,
-        notelepon,
-        keperluan,
-        alamat,
-        namaWbp,
-        // barang,
-        tanggal_kunjungan
-      ].forEach(el=>{
-        el.addEventListener("input", checkValid);
-      });
-
-      klasifikasi_wbp.forEach(r=> r.addEventListener("change", checkValid));
-      hubungan.forEach(r=> r.addEventListener("change", checkValid));
-
-      // panggil saat load
-      checkValid();
-      document.addEventListener("checkForm", checkValid);
-
-      // ⬇️ INI YANG KAMU KURANG
-      document.addEventListener("DOMContentLoaded", function () {
-        checkValid(); // 🔒 kunci tombol sejak awal
-      });
-
-    });
-    </script> -->
-    
-    <!-- <script>
-    document.addEventListener("DOMContentLoaded", function(){
-
-      const btnPreview = document.getElementById("btn-preview");
-
-      const radioKartu = document.querySelectorAll('input[name="radio_kartu_identitas"]');
-      const idCard = document.getElementById("id_card");
-      const namaLengkap = document.getElementById("nama_pengaju");
-      const radioJK = document.querySelectorAll('input[name="radio_jenis_kelamin"]');
-      const notelepon = document.getElementById("no_telepon");
-      const keperluan = document.getElementById("keperluan");
-      const alamat = document.getElementById("alamat_pengaju");
-      const namaWbp = document.getElementById("nama_wbp");
-      const hubungan = document.querySelectorAll('input[name="radio_hubungan_wbp"]');
-      const klasifikasi = document.querySelectorAll('input[name="klasifikasi_wbp"]');
-      const uploadIzin = document.getElementById("upload_izin_besuk");
-      const tanggal = document.getElementById("tanggal_kunjungan");
-
-      let jenisId = null;
-
-      idCard.disabled = true;
-      btnPreview.disabled = true;
-
-      function checkValid(){
-        let valid = true;
-
-        // JENIS Pengajuan
-        if(radio_jenis_pengajuan.trim() === "") valid = false;
-
-        // Nama Warga Binaan Pemasyarakatan
-        if(namaWbp.value.trim() === "") valid = false;
-        
-        //Klasifikasi WBP
-        const klas = [...klasifikasi].find(r => r.checked);
-        if(!klas) valid = false;
-
-        //Perkara
-
-        //Pasal
-
-        //Nama Lengkap Pengunjung
-        if(namaLengkap.value.trim() === "") valid = false;
-
-        //Pilih Jenis Kartu Identitas
-        if(!jenisId) valid = false;
-
-        // NOMOR IDENTITAS
-        const v = idCard.value.trim();
-        if(jenisId === "NIK" && !(v.length === 16 && /^\d+$/.test(v))) valid = false;
-        if(jenisId === "SIM" && !((v.length === 14 || v.length === 16) && /^\d+$/.test(v))) valid = false;
-        if(jenisId === "Paspor" && !(v.length === 9 && /^[A-Za-z0-9]+$/.test(v))) valid = false;
-        if(jenisId === "Lainnya" && v === "") valid = false;
-
-        // Jenis Kelamin
-        if(![...radioJK].some(r => r.checked)) valid = false;
-
-        // Alamat Pengunjung
-        if(alamat.value.trim() === "") valid = false;
-
-        // No Telepon / WA
-        if(notelepon.value.trim().length < 10 || notelepon.value.trim().length > 13) valid = false;
-
-        // Email
-
-        // HUbungan dengan WBP
-        if(![...hubungan].some(r => r.checked)) valid = false;
-
-        btnPreview.disabled = !valid;
-      }
-
-      // ===============================
-      // EVENTS
-      // ===============================
-      radioKartu.forEach(r => {
-        r.addEventListener("change", function(){
-          jenisId = this.value;
-          idCard.disabled = false;
-          idCard.value = "";
-          checkValid();
-        });
-      });
-
-      [
-        idCard,
-        namaLengkap,
-        notelepon,
-        keperluan,
-        alamat,
-        namaWbp,
-        tanggal
-      ].forEach(el => el.addEventListener("input", checkValid));
-
-      radioJK.forEach(r => r.addEventListener("change", checkValid));
-      hubungan.forEach(r => r.addEventListener("change", checkValid));
-      klasifikasi.forEach(r => r.addEventListener("change", checkValid));
-
-      checkValid();
-    });
-</script> -->
     <script>
     document.addEventListener("DOMContentLoaded", function(){
 

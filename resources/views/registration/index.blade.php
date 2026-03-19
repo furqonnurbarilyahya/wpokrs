@@ -862,23 +862,29 @@
       radio_kartu_identitas: "Jenis Kartu Identitas",
       id_card: "Nomor Identitas",
       nama_lengkap: "Nama Lengkap",
-      jenis_kelamin: "Jenis Kelamin",
+      radio_jenis_kelamin: "Jenis Kelamin",
       alamat_pengunjung: "Alamat Pengunjung",
-
+      no_hp: "No Telepon/WA",
+      keperluan: "Keperluan",
       dewasa_laki: "Pengikut Laki-laki",
       dewasa_perempuan: "Pengikut Perempuan",
       anak: "Pengikut Anak-anak",
       total_pengunjung: "Total Pengunjung",
-
       nama_ayah_wbp: "Nama Ayah WBP",
       nama_wbp: "Nama WBP",
       klasifikasi_wbp: "Klasifikasi WBP",
-
       upload_izin_besuk: "File Izin Besuk",
-
       radio_hubungan_wbp: "Hubungan dengan WBP",
-      // keterangan: "Daftar Barang Bawaan",
-      tanggal_kunjungan: "Tanggal Kunjungan"
+      tanggal_kunjungan: "Tanggal Kunjungan",
+      nama_barang_1: "Nama Barang 1",
+      jumlah_1: "Jumlah Barang 1",
+      keterangan_1: "Keterangan Barang 1",
+      nama_barang_2: "Nama Barang 2",
+      jumlah_2: "Jumlah Barang 2",
+      keterangan_2: "Keterangan Barang 2",
+      nama_barang_3: "Nama Barang 3",
+      jumlah_3: "Jumlah Barang 3",
+      keterangan_3: "Keterangan Barang 3"
     };
 
     const btnPreview = document.getElementById("btn-preview");
