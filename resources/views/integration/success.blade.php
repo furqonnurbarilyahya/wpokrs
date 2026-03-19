@@ -6,7 +6,7 @@
     <title>Pengajuan Berhasil</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="icon" href="https://i.ibb.co.com/yBWrMqZY/Gemini-Generated-Image-lc5naelc5naelc5n.png" type="image/png">
 </head>
 
 <body class="bg-light d-flex align-items-center justify-content-center min-vh-100">
@@ -33,15 +33,20 @@
         </div>
 
         <p class="text-muted">
-            Silakan simpan atau screenshot kode ini untuk mengecek status pengajuan.
+            Setelah menekan tombol "Ajukan Permohonan", Anda akan diarahkan ke WhatsApp untuk mengirimkan kode pengajuan sebagai bagian dari proses penerbitan surat permohonan
         </p>
 
-        <a href="/" class="btn btn-danger w-100 mb-3">
-            Kembali ke Halaman Utama
-        </a>
+            @php
+                $nomor = request('nomor');
+                $pesan = urlencode("Halo Admin, saya sudah melakukan pendaftaran integrasi secara online. Berikut kode saya: $nomor. Mohon konfirmasi.");
+            @endphp
 
-        <a href="{{ route('download.pdf', request('nomor')) }}" class="btn btn-warning">
-            Download Surat PDF
+            <a href="https://wa.me/6285732156800?text={{ $pesan }}" class="btn btn-success mb-3" target="_blank">
+                    Ajukan Permohonan via WhatsApp
+            </a>
+
+            <a href="/" class="btn btn-danger w-100">
+            Kembali ke Halaman Utama
         </a>
 
     </div>
