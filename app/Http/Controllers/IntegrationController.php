@@ -23,7 +23,7 @@ class IntegrationController extends Controller
 
         $service = new Sheets($client);
 
-        $spreadsheetId = env('SPREADSHEET_ID');
+        $spreadsheetId = config('services.google_sheets.spreadsheet_id');
 
         $data = [
             [

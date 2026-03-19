@@ -9,7 +9,7 @@ use Google\Service\Sheets;
 
 class RegistrationController extends Controller
 {
-    public function index ()
+    public function index()
     {
         return view('registration.index');
     }
@@ -24,11 +24,11 @@ class RegistrationController extends Controller
 
         $service = new Sheets($client);
 
-        $spreadsheetId = env('SPREADSHEET_ID');
-
+        $spreadsheetId = config('services.google_sheets.spreadsheet_id');
+        
         $data = [
             [
-                now()->format('j/n/Y, H.i.s'),
+                now()->locale('id')->translatedFormat('j F Y'),
                 $request->radio_kartu_identitas,
                 $request->id_card,
                 $request->nama_lengkap,
@@ -67,12 +67,16 @@ class RegistrationController extends Controller
             'valueInputOption' => 'RAW'
         ];
 
-        $service->spreadsheets_values->append(
-            $spreadsheetId,
-            'Sheet1',
-            $body,
-            $params
-        );
+        try {
+            $service->spreadsheets_values->append(
+                $spreadsheetId,
+                'Sheet1',
+                $body,
+                $params
+            );
+        } catch (\Exception $e) {
+            return back()->with('error', 'Terjadi kesalahan, silakan coba lagi.');
+        }
 
         // return redirect("/success?nomor=".$nomor);
         return redirect()->route('registration.success', ['nomor' => $nomor]);
@@ -83,13 +87,13 @@ class RegistrationController extends Controller
         $letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $numbers = "0123456789";
 
-        $letter = $letters[rand(0,25)];
-        $num1 = $numbers[rand(0,9)];
-        $num2 = $numbers[rand(0,9)];
+        $letter = $letters[rand(0, 25)];
+        $num1 = $numbers[rand(0, 9)];
+        $num2 = $numbers[rand(0, 9)];
 
-        $arr = [$letter,$num1,$num2];
+        $arr = [$letter, $num1, $num2];
         shuffle($arr);
 
-        return implode("",$arr);
+        return implode("", $arr);
     }
 }
